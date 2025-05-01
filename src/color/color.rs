@@ -12,6 +12,7 @@ use material_colors::{
 };
 
 use colorsys::{Hsl, Rgb};
+use owo_colors::colors::xterm::LightCodGray;
 use std::str::FromStr;
 
 use crate::{color::math::get_color_distance_lab, scheme::SchemeTypes};
@@ -175,6 +176,16 @@ pub fn generate_dynamic_scheme(
             SchemeVibrant::new(Hct::new(source_color), is_dark, contrast_level).scheme
         }
     }
+}
+
+pub fn adjust_color_lightness(
+    color: Argb,
+    lightness_level: &Option<f64>,
+) -> Argb {
+    // If lightness values were plotted on a graph, the effect of this function is to rotate the line corresponding to the identity function about x = 255 and y = 255.
+    let pre_lightness_level = ((color.red as f64) + (color.green as f64) + (color.blue as f64))/ 3.0;
+    let adj = (pre_lightness_level / 255.0 * (1.0 - lightness_level.unwrap_or(0.0)) + lightness_level.unwrap_or(0.0)) / pre_lightness_level* 255.0;
+    Argb::new(color.alpha, (color.red as f64 * adj).clamp(0.0, 255.0) as u8, (color.green as f64 * adj).clamp(0.0, 255.0) as u8, (color.blue as f64 * adj).clamp(0.0, 255.0) as u8)
 }
 
 pub fn make_custom_color(

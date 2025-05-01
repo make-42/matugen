@@ -8,7 +8,7 @@
      <br>
      <img alt="downloads" src="https://custom-icon-badges.demolab.com/crates/d/matugen?color=3D3838&logo=download&style=for-the-badge&logoColor=370D10&labelColor=FEB3B3">
      <img alt="stars" src="https://custom-icon-badges.demolab.com/github/stars/InioX/matugen?color=3D3838&logo=star&style=for-the-badge&logoColor=370D10&labelColor=FEB3B3">
-     <br> 
+     <br>
     <a href="#-------------------------installation">Installation</a>
     ·
     <a href="https://github.com/InioX/matugen/wiki">Wiki</a>
@@ -49,7 +49,7 @@
 - **Custom Keywords/Colors:**
      - Define your own custom keywords or colors you would like to be harmonized inside the config file, that you can then use in templates
 - **Palette Customization:**
-     - Customize the contrast and scheme type for the palette
+     - Customize the contrast, lightness, and scheme type for the palette
 - **Restart Apps/Change Wallpaper:**
      - Restart supported apps and set the wallpaper on Windows, MacOS, Linux and NetBSD
 
@@ -66,9 +66,9 @@
 
 ### Other projects
 - [Mitsugen](https://github.com/DimitrisMilonopoulos/mitsugen) - For gnome-shell, based on the [old](https://github.com/InioX/matugen/tree/python) version of Matugen
-- [pywal](https://github.com/dylanaraps/pywal) - More color generation backends, default theme files. 
+- [pywal](https://github.com/dylanaraps/pywal) - More color generation backends, default theme files.
 - [wpgtk](https://github.com/deviantfero/wpgtk) - Like pywal, but with a gui and more features.
-  
+
 <h2>
      <sub>
           <img  src="https://github.com/InioX/matugen/assets/81521595/3c01525a-c8b1-499e-9f28-a17e81edfb5b"
@@ -164,7 +164,7 @@ Then you can add it to your packages:
 let
   system = "x86_64-linux";
 in {
-  environment.systemPackages = with pkgs; [    
+  environment.systemPackages = with pkgs; [
     # ...
     inputs.matugen.packages.${system}.default
   ];
